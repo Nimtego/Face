@@ -17,6 +17,11 @@ public class Solution {
         this.field = field;
     }
 
+    public Solution(Field field) {
+        this.field = field;
+        listShape = new ArrayList<>();
+    }
+
     public List<Shape> getListShape() {
         return listShape;
     }
@@ -34,13 +39,19 @@ public class Solution {
     }
 
     public void generateField() {
+        field.fieldClear();
         for (Shape shape : listShape) {
             field.put(shape);
         }
     }
 
+    public boolean putShape(final Shape shape) {
+        return listShape.add(shape);
+    }
     @Override
     public String toString() {
+        generateField();
         return field.toString();
     }
+
 }

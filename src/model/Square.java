@@ -1,6 +1,7 @@
 package model;
 import model.behavior.RotateSquare;
 
+import static model.utilits.Constant.EMPTY;
 import static model.utilits.Constant.SYMBOL;
 
 /**
@@ -46,10 +47,30 @@ public class Square extends Shape {
 
     @Override
     public char[][] toCharArray() {
-        int max = fieldPosition.getMax(oppositePoint);
-        char[][] array = new char[max][max];
+        StringBuilder sb = new StringBuilder();
+        int a, b;
+        a = oppositePoint.getX() - fieldPosition.getX();
+        b = oppositePoint.getY() - fieldPosition.getY();
+        char[][] array = new char[a][b];
+        for (int i = 0; i < a; i++) {
+            array[0][i] = SYMBOL;
+        }
+        for (int i = 1; i < b - 1; i++) {
+            array[i][0] = SYMBOL;
+            for (int k = 1; k < a - 1; k++) {
+                array[i][k] = EMPTY;
+            }
+            array[i][array[0].length - 1] = SYMBOL;
+        }
+        for (int i = 0; i < a; i++) {
+            array[array.length - 1][i] = SYMBOL;
+        }
+        return array;
+    }
 
-        return new char[max][max];
+    @Override
+    public void move() {
+
     }
 }
 

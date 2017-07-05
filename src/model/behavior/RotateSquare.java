@@ -1,7 +1,7 @@
 package model.behavior;
 
+import model.Line;
 import model.Shape;
-import model.Square;
 
 /**
  * Created by myasnikov
@@ -10,7 +10,7 @@ import model.Square;
 public class RotateSquare implements RotateBehavior {
     @Override
     public boolean rotate(Shape shape) {
-        Square square = (Square)shape;
+        Line square = (Line)shape;
         return square.getOppositePoint().swap();
     }
 }

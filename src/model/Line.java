@@ -1,6 +1,6 @@
 package model;
 
-import model.behavior.RotateLine;
+import model.behavior.RotateSquare;
 
 import static model.utilits.Constant.SYMBOL;
 
@@ -12,7 +12,7 @@ public class Line extends Shape {
     private Point oppositePoint;
 
     public Line(Point fieldPosition, Point oppositePoint) {
-        super(Type.LINE, fieldPosition, new RotateLine(), null);
+        super(Type.LINE, fieldPosition, new RotateSquare(), null);
         this.oppositePoint = oppositePoint;
     }
 
@@ -51,5 +51,10 @@ public class Line extends Shape {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public void move() {
+
     }
 }

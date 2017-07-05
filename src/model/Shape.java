@@ -62,4 +62,5 @@ public abstract class Shape implements Print, FormSet {
             return false;
         return rotateBehavior.rotate(this);
     }
+    public abstract void move();
 }

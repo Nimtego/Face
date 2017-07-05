@@ -1,6 +1,8 @@
 package model;
 
 
+import static model.utilits.Constant.EMPTY;
+
 /**
  * Created by myasnikov
  * on 05.07.2017.
@@ -32,7 +34,8 @@ public class Field {
         int y = shape.getFieldPosition().getY();
         for (int i = 0; i < tmp.length; i++) {
             for (int k = 0; k < tmp[i].length; k++) {
-                field[x + i][y + k] = tmp[i][k];
+                if (field[x + i][y + k] == EMPTY)
+                    field[x + i][y + k] = tmp[i][k];
             }
         }
     }
@@ -46,5 +49,12 @@ public class Field {
             sb.append("\n");
         }
         return String.valueOf(sb);
+    }
+    public void fieldClear() {
+        for (int i = 0; i < field.length; i++) {
+            for (int k = 0; k < field[i].length; k++) {
+                field[i][k] = EMPTY;
+            }
+        }
     }
 }
