@@ -8,59 +8,57 @@ import model.behavior.RotateBehavior;
  * Created by myasnikov
  * on 04.07.2017.
  */
-public abstract class Shape implements Print, FormSet {
+public abstract class Shape implements Print {
     private Type type;
-    protected Point fieldPosition;
+    protected Point startingPosition;
+    protected Point endPosition;
     private RotateBehavior rotateBehavior;
     private ReflectBehavior reflectBehavior;
 
+    public Shape(Type type, Point startingPosition, Point endPosition) {
+        this.type = type;
+        this.startingPosition = startingPosition;
+        this.endPosition = endPosition;
+    }
+
     public Shape(Type type,
-                 Point fieldPosition,
+                 Point startingPosition,
+                 Point endPosition,
                  RotateBehavior rotateBehavior,
-                 ReflectBehavior reflectBehavior
-                 ) {
-        this.fieldPosition = fieldPosition;
+                 ReflectBehavior reflectBehavior) {
+        this.type = type;
+        this.startingPosition = startingPosition;
+        this.endPosition = endPosition;
         this.rotateBehavior = rotateBehavior;
         this.reflectBehavior = reflectBehavior;
-        this.type = type;
     }
-
-    public Point getFieldPosition() {
-        return fieldPosition;
-    }
-
-    public void setFieldPosition(Point fieldPosition) {
-        this.fieldPosition = fieldPosition;
-    }
-
-    public RotateBehavior getRotateBehavior() {
-        return rotateBehavior;
-    }
-
-    public final void setRotateBehavior(RotateBehavior rotateBehavior) {
+    
+    public final void setRotateBehavior(RotateBehavior rotateBehavior) {// см. setReflectBehavior
         this.rotateBehavior = rotateBehavior;
     }
-
-    public ReflectBehavior getReflectBehavior() {
-        return reflectBehavior;
-    }
-
-    public void setReflectBehavior(ReflectBehavior reflectBehavior) {
-        this.reflectBehavior = reflectBehavior;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public boolean rotate() {
-        if (rotateBehavior == null)
-            return false;
+    
+    public boolean rotate() { //делегирование поворота фигуры полиморфному обьекту
         return rotateBehavior.rotate(this);
     }
+    public boolean reflect() { //см. rotate
+        return reflectBehavior.reflect(this);
+    }
     public abstract void move();
+    public abstract char[][] toCharArray();
+
+    public Point getStartingPosition() {
+        return startingPosition;
+    }
+
+    public void setEndPosition(Point endPosition) {
+        this.endPosition = endPosition;
+    }
+
+    public Point getEndPosition() {
+        return endPosition;
+    }
+
+    public void setStartingPosition(Point startingPosition) {
+        this.startingPosition = startingPosition;
+    }
 }

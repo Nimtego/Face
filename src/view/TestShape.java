@@ -23,8 +23,9 @@ public class TestShape {
         for (int i = 0; i < 100; i++) {
             line.rotate();
             line2.rotate();
+            square.rotate();
             System.out.println(solution);
-            Thread.sleep(300);
+            Thread.sleep(500);
         }
 /*        Shape square = new Square(new Point(5,4), new Point(5, 8));
         solution.putShape(square);

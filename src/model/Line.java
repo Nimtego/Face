@@ -1,6 +1,6 @@
 package model;
 
-import model.behavior.RotateSquare;
+import model.behavior.Rotate;
 
 import static model.utilits.Constant.SYMBOL;
 
@@ -9,30 +9,21 @@ import static model.utilits.Constant.SYMBOL;
  * on 05.07.2017.
  */
 public class Line extends Shape {
-    private Point oppositePoint;
 
-    public Line(Point fieldPosition, Point oppositePoint) {
-        super(Type.LINE, fieldPosition, new RotateSquare(), null);
-        this.oppositePoint = oppositePoint;
-    }
-
-    public Point getOppositePoint() {
-        return oppositePoint;
-    }
-
-    public void setOppositePoint(Point oppositePoint) {
-        this.oppositePoint = oppositePoint;
+    public Line(Point startingPosition, Point endPosition) {
+        super(Type.LINE, startingPosition, endPosition);
+        this.setRotateBehavior(new Rotate());
     }
 
     @Override
     public char[][] toCharArray() {
         int lengthX = 1;
         int lengthY = 1;
-        if (fieldPosition.getX() == oppositePoint.getX()) {
-            lengthY = Math.abs(fieldPosition.getY()) + Math.abs(oppositePoint.getY());
+        if (startingPosition.getX() == endPosition.getX()) {
+            lengthY = Math.abs(startingPosition.getY()) + Math.abs(endPosition.getY());
         }
         else
-            lengthX = Math.abs(fieldPosition.getX()) + Math.abs(oppositePoint.getX());
+            lengthX = Math.abs(startingPosition.getX()) + Math.abs(endPosition.getX());
         char[][] array = new char[lengthX][lengthY];
         for (int i = 0; i < lengthX; i++) {
             for (int k = 0; k < lengthY; k++) {

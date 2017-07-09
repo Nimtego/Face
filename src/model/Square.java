@@ -1,5 +1,5 @@
 package model;
-import model.behavior.RotateSquare;
+import model.behavior.Rotate;
 
 import static model.utilits.Constant.EMPTY;
 import static model.utilits.Constant.SYMBOL;
@@ -9,26 +9,17 @@ import static model.utilits.Constant.SYMBOL;
  * on 04.07.2017.
  */
 public class Square extends Shape {
-    private Point oppositePoint;
 
-    public Square(Point fieldPosition, Point oppositePoint) {
-        super(Type.SQUARE, fieldPosition, new RotateSquare(), null);
-        this.oppositePoint = oppositePoint;
-    }
-
-    public Point getOppositePoint() {
-        return oppositePoint;
-    }
-
-    public void setOppositePoint(Point oppositePoint) {
-        this.oppositePoint = oppositePoint;
+    public Square(Point startingPosition, Point endPosition) {
+        super(Type.SQUARE, startingPosition, endPosition);
+        this.setRotateBehavior(new Rotate());
     }
 
     @Override
     public void print() {
         int a, b;
-        a = oppositePoint.getX() - fieldPosition.getX();
-        b = oppositePoint.getY() - fieldPosition.getY();
+        a = endPosition.getX() - startingPosition.getX();
+        b = endPosition.getY() - startingPosition.getY();
         for (int i = 0; i < a + 1; i++) {
             System.out.print(SYMBOL +" ");
         }
@@ -49,8 +40,8 @@ public class Square extends Shape {
     public char[][] toCharArray() {
         StringBuilder sb = new StringBuilder();
         int a, b;
-        a = oppositePoint.getX() - fieldPosition.getX();
-        b = oppositePoint.getY() - fieldPosition.getY();
+        a = endPosition.getX() - startingPosition.getX();
+        b = endPosition.getY() - startingPosition.getY();
         char[][] array = new char[a][b];
         for (int i = 0; i < a; i++) {
             array[0][i] = SYMBOL;

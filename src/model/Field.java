@@ -30,8 +30,8 @@ public class Field {
 
     public void put(Shape shape) {
         char[][] tmp = shape.toCharArray();
-        int x = shape.getFieldPosition().getX();
-        int y = shape.getFieldPosition().getY();
+        int x = shape.getStartingPosition().getX();
+        int y = shape.getStartingPosition().getY();
         for (int i = 0; i < tmp.length; i++) {
             for (int k = 0; k < tmp[i].length; k++) {
                 if (field[x + i][y + k] == EMPTY)
