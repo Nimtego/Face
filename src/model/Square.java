@@ -1,4 +1,5 @@
 package model;
+import model.behavior.Move;
 import model.behavior.Rotate;
 
 import static model.utilits.Constant.EMPTY;
@@ -12,7 +13,8 @@ public class Square extends Shape {
 
     public Square(Point startingPosition, Point endPosition) {
         super(Type.SQUARE, startingPosition, endPosition);
-        this.setRotateBehavior(new Rotate());
+        this.setRotateBehavior(new Rotate(this));
+        this.setMoveBehavior(new Move(this));
     }
 
     @Override
@@ -21,7 +23,7 @@ public class Square extends Shape {
         a = endPosition.getX() - startingPosition.getX();
         b = endPosition.getY() - startingPosition.getY();
         for (int i = 0; i < a + 1; i++) {
-            System.out.print(SYMBOL +" ");
+            System.out.print(SYMBOL + " ");
         }
         System.out.println();
         for (int i = 0; i < b - 1; i++) {
@@ -29,39 +31,36 @@ public class Square extends Shape {
             for (int k = 0; k < a - 1; k++) {
                 System.out.print("  ");
             }
-            System.out.println(" " +SYMBOL);
+            System.out.println(" " + SYMBOL);
         }
         for (int i = 0; i < a + 1; i++) {
-            System.out.print(SYMBOL +" ");
+            System.out.print(SYMBOL + " ");
         }
+    }
+
+    @Override
+    public void move(Direction direction) {
+
     }
 
     @Override
     public char[][] toCharArray() {
-        StringBuilder sb = new StringBuilder();
         int a, b;
-        a = endPosition.getX() - startingPosition.getX();
-        b = endPosition.getY() - startingPosition.getY();
+        a = endPosition.getX() - startingPosition.getX() + 1;
+        b = endPosition.getY() - startingPosition.getY() + 1;
         char[][] array = new char[a][b];
         for (int i = 0; i < a; i++) {
-            array[0][i] = SYMBOL;
-        }
-        for (int i = 1; i < b - 1; i++) {
-            array[i][0] = SYMBOL;
-            for (int k = 1; k < a - 1; k++) {
+            for (int k = 0; k < b; k++) {
+                if (i == 0 || i + 1 == a) {
+                    array[i][k] = SYMBOL;
+                    continue;
+                }
                 array[i][k] = EMPTY;
+                array[i][0] = SYMBOL;
+                array[i][b - 1] = SYMBOL;
             }
-            array[i][array[0].length - 1] = SYMBOL;
-        }
-        for (int i = 0; i < a; i++) {
-            array[array.length - 1][i] = SYMBOL;
         }
         return array;
-    }
-
-    @Override
-    public void move() {
-
     }
 }
 

@@ -11,7 +11,7 @@ public class Triangle extends Shape{
     }
 
     @Override
-    public void move() {
+    public void move(Direction direction) {
 
     }
 

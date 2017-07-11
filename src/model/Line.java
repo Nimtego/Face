@@ -1,5 +1,6 @@
 package model;
 
+import model.behavior.Move;
 import model.behavior.Rotate;
 
 import static model.utilits.Constant.SYMBOL;
@@ -12,7 +13,8 @@ public class Line extends Shape {
 
     public Line(Point startingPosition, Point endPosition) {
         super(Type.LINE, startingPosition, endPosition);
-        this.setRotateBehavior(new Rotate());
+        this.setRotateBehavior(new Rotate(this));
+        this.setMoveBehavior(new Move(this));
     }
 
     @Override
@@ -45,7 +47,7 @@ public class Line extends Shape {
     }
 
     @Override
-    public void move() {
+    public void move(final Direction direction) {
 
     }
 }

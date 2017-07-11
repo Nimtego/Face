@@ -1,6 +1,7 @@
 package model;
 
 
+import model.behavior.MoveBehavior;
 import model.behavior.ReflectBehavior;
 import model.behavior.RotateBehavior;
 
@@ -14,6 +15,7 @@ public abstract class Shape implements Print {
     protected Point endPosition;
     private RotateBehavior rotateBehavior;
     private ReflectBehavior reflectBehavior;
+    private MoveBehavior moveBehavior;
 
     public Shape(Type type, Point startingPosition, Point endPosition) {
         this.type = type;
@@ -25,12 +27,14 @@ public abstract class Shape implements Print {
                  Point startingPosition,
                  Point endPosition,
                  RotateBehavior rotateBehavior,
-                 ReflectBehavior reflectBehavior) {
+                 ReflectBehavior reflectBehavior,
+                 MoveBehavior moveBehavior) {
         this.type = type;
         this.startingPosition = startingPosition;
         this.endPosition = endPosition;
         this.rotateBehavior = rotateBehavior;
         this.reflectBehavior = reflectBehavior;
+        this.moveBehavior = moveBehavior;
     }
     
     public final void setRotateBehavior(RotateBehavior rotateBehavior) {// см. setReflectBehavior
@@ -38,13 +42,21 @@ public abstract class Shape implements Print {
     }
     
     public boolean rotate() { //делегирование поворота фигуры полиморфному обьекту
-        return rotateBehavior.rotate(this);
+        return rotateBehavior.rotate();
     }
     public boolean reflect() { //см. rotate
-        return reflectBehavior.reflect(this);
+        return reflectBehavior.reflect();
     }
-    public abstract void move();
+    public abstract void move(Direction direction);
     public abstract char[][] toCharArray();
+
+    public MoveBehavior getMoveBehavior() {
+        return moveBehavior;
+    }
+
+    public void setMoveBehavior(MoveBehavior moveBehavior) {
+        this.moveBehavior = moveBehavior;
+    }
 
     public Point getStartingPosition() {
         return startingPosition;
