@@ -48,6 +48,6 @@ public class Line extends Shape {
 
     @Override
     public void move(final Direction direction) {
-
+        getMoveBehavior().move(direction);
     }
 }
