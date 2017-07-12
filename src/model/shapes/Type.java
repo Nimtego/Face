@@ -5,5 +5,5 @@ package model.shapes;
  * on 04.07.2017.
  */
 public enum Type {
-    LINE, SQUARE
+    LINE, SQUARE, CONNECTED
 }

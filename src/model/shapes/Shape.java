@@ -12,6 +12,7 @@ import model.behavior.RotateBehavior;
  */
 public abstract class Shape {
     private Type type;
+    private long id;
     protected Point startingPosition;
     protected Point endPosition;
     private RotateBehavior rotateBehavior;
@@ -76,6 +77,14 @@ public abstract class Shape {
 
     public boolean reflect() { //см. rotate
         return reflectBehavior.reflect();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void print() {

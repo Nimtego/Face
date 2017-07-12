@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GeneratorId {
     private static AtomicLong idCounter = new AtomicLong();
 
-    public static long createSerialNumber() {
+    public static long createId() {
         return idCounter.getAndIncrement();
     }
 }

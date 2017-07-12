@@ -1,29 +1,16 @@
 package model.shapes;
 
-import model.utilits.GeneratorId;
-
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by myasnikov
  * on 12.07.2017.
  */
-public class ConnectedShape {
-    private long  serialNumber;
+public class ConnectedShape extends Shape{
     private List<Shape> connectList;
 
-    public ConnectedShape() {
-        connectList = new LinkedList<>();
-        serialNumber = GeneratorId.createSerialNumber();
-    }
-
-    public long getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(long serialNumber) {
-        this.serialNumber = serialNumber;
+    public ConnectedShape(Point startingPosition, Point endPosition) { // TODO: 13.07.2017  
+        super(Type.CONNECTED, startingPosition, endPosition);
     }
 
     public List<Shape> getConnectList() {
@@ -32,5 +19,10 @@ public class ConnectedShape {
 
     public void setConnectList(List<Shape> connectList) {
         this.connectList = connectList;
+    }
+
+    @Override
+    public char[][] toCharArray() {
+        return new char[0][];
     }
 }
