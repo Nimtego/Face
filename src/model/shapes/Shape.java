@@ -1,6 +1,7 @@
-package model;
+package model.shapes;
 
 
+import model.Direction;
 import model.behavior.MoveBehavior;
 import model.behavior.ReflectBehavior;
 import model.behavior.RotateBehavior;
@@ -9,7 +10,7 @@ import model.behavior.RotateBehavior;
  * Created by myasnikov
  * on 04.07.2017.
  */
-public abstract class Shape implements Print {
+public abstract class Shape {
     private Type type;
     protected Point startingPosition;
     protected Point endPosition;
@@ -36,26 +37,21 @@ public abstract class Shape implements Print {
         this.reflectBehavior = reflectBehavior;
         this.moveBehavior = moveBehavior;
     }
-    
+
     public final void setRotateBehavior(RotateBehavior rotateBehavior) {// см. setReflectBehavior
         this.rotateBehavior = rotateBehavior;
     }
-    
-    public boolean rotate() { //делегирование поворота фигуры полиморфному обьекту
-        return rotateBehavior.rotate();
+
+    public final void setMoveBehavior(MoveBehavior moveBehavior) {
+        this.moveBehavior = moveBehavior;
     }
-    public boolean reflect() { //см. rotate
-        return reflectBehavior.reflect();
+
+    public final void setReflectBehavior(ReflectBehavior reflectBehavior) {
+        this.reflectBehavior = reflectBehavior;
     }
-    public abstract void move(Direction direction);
-    public abstract char[][] toCharArray();
 
     public MoveBehavior getMoveBehavior() {
         return moveBehavior;
-    }
-
-    public void setMoveBehavior(MoveBehavior moveBehavior) {
-        this.moveBehavior = moveBehavior;
     }
 
     public Point getStartingPosition() {
@@ -73,4 +69,28 @@ public abstract class Shape implements Print {
     public void setStartingPosition(Point startingPosition) {
         this.startingPosition = startingPosition;
     }
+
+    public boolean rotate() { //делегирование поворота фигуры полиморфному обьекту
+        return rotateBehavior.rotate();
+    }
+
+    public boolean reflect() { //см. rotate
+        return reflectBehavior.reflect();
+    }
+
+    public void print() {
+        char[][] array = toCharArray();
+        for (char[] ch : array) {
+            for (char c : ch) {
+                System.out.print(c);
+            }
+            System.out.println();
+        }
+    }
+
+    public void move(Direction direction) {
+        moveBehavior.move(direction);
+    }
+
+    public abstract char[][] toCharArray();
 }

@@ -1,6 +1,8 @@
 package model;
 
 
+import model.shapes.Shape;
+
 import static model.utilits.Constant.EMPTY;
 
 /**

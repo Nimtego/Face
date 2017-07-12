@@ -1,4 +1,4 @@
-package model;
+package model.shapes;
 
 /**
  * Created by myasnikov
@@ -29,19 +29,6 @@ public class Point {
         this.y = y;
     }
 
-    public boolean swap() {
-        int tmp;
-        tmp = x;
-        x = y;
-        y = tmp;
-        return true;
-    }
-
-    public int getMax(Point oppositePoint) {
-        int maxX = this.x > oppositePoint.x ? this.x : oppositePoint.x;
-        int maxY = this.y > oppositePoint.y ? this.y : oppositePoint.y;
-        return maxX > maxY ? maxX : maxY;
-    }
 
     @Override
     public String toString() {

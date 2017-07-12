@@ -1,7 +1,6 @@
 package model.behavior;
 
-import model.Shape;
-import sun.security.provider.SHA;
+import model.shapes.Shape;
 
 /**
  * Created by myasnikov

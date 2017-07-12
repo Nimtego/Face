@@ -1,6 +1,6 @@
 package model.behavior;
 
-import model.Shape;
+import model.shapes.Shape;
 
 /**
  * Created by myasnikov
@@ -15,6 +15,7 @@ public class Reflect implements ReflectBehavior {
 
     @Override
     public boolean reflect() {
+        // TODO: 12.07.2017
         return false;
     }
 }

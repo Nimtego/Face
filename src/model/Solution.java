@@ -1,5 +1,8 @@
 package model;
 
+import model.shapes.ConnectedShape;
+import model.shapes.Shape;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +12,9 @@ import java.util.List;
  */
 public class Solution {
     private List<Shape> listShape;
+    private List<ConnectedShape> connectedShapeList;
     private Field field;
+
 
     public Solution(Field field, Shape shape) {
         listShape = new ArrayList<>();
@@ -43,6 +48,9 @@ public class Solution {
         for (Shape shape : listShape) {
             field.put(shape);
         }
+    }
+    public boolean connect(Shape first, Shape second) {
+        return true; // TODO: 13.07.2017
     }
 
     public boolean putShape(final Shape shape) {
