@@ -36,6 +36,12 @@ public class Line extends Shape {
         }
         return array;
     }
+
+    @Override
+    public Shape copy() {
+        return new Line(getStartingPosition(), getEndPosition());
+    }
+
     @Override
     public void move(final Direction direction) {
         getMoveBehavior().move(direction);

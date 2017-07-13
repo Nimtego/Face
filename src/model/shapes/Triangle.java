@@ -10,11 +10,16 @@ import model.behavior.Rotate;
  */
 public class Triangle extends Shape {
 
-    public Triangle(Type type, Point startingPosition, Point endPosition) {
-        super(type, startingPosition, endPosition);
+    public Triangle(Point startingPosition, Point endPosition) {
+        super(Type.TRIANGLE, startingPosition, endPosition);
         this.setMoveBehavior(new Move(this));
         this.setReflectBehavior(new Reflect(this));
         this.setRotateBehavior(new Rotate(this));
+    }
+
+    @Override
+    public Shape copy() {
+        return new Triangle(getStartingPosition(), getEndPosition());
     }
 
     @Override

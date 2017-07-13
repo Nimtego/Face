@@ -1,6 +1,5 @@
 package model;
 
-import model.shapes.ConnectedShape;
 import model.shapes.Shape;
 
 import java.util.ArrayList;
@@ -12,15 +11,7 @@ import java.util.List;
  */
 public class Solution {
     private List<Shape> listShape;
-    private List<ConnectedShape> connectedShapeList;
     private Field field;
-
-
-    public Solution(Field field, Shape shape) {
-        listShape = new ArrayList<>();
-        listShape.add(shape);
-        this.field = field;
-    }
 
     public Solution(Field field) {
         this.field = field;
@@ -53,8 +44,9 @@ public class Solution {
         return true; // TODO: 13.07.2017
     }
 
-    public boolean putShape(final Shape shape) {
-        return listShape.add(shape);
+    public Solution putShape(final Shape shape) {
+        listShape.add(shape);
+        return this;
     }
     @Override
     public String toString() {

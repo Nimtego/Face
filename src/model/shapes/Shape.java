@@ -38,6 +38,7 @@ public abstract class Shape {
         this.reflectBehavior = reflectBehavior;
         this.moveBehavior = moveBehavior;
     }
+    public abstract Shape copy();
 
     public final void setRotateBehavior(RotateBehavior rotateBehavior) {// см. setReflectBehavior
         this.rotateBehavior = rotateBehavior;

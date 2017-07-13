@@ -19,6 +19,11 @@ public class Square extends Shape {
     }
 
     @Override
+    public Shape copy() {
+        return new Square(getStartingPosition(), getEndPosition());
+    }
+
+    @Override
     public void move(Direction direction) {
         getMoveBehavior().move(direction);
     }
