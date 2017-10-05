@@ -1,9 +1,11 @@
 package model.behavior;
 
+import model.shapes.Shape;
+
 /**
  * Created by myasnikov
- * on 04.07.2017.
+ * on 05.10.2017.
  */
 public interface RotateBehavior {
-    boolean rotate();
+    boolean rotate(Shape shape);
 }

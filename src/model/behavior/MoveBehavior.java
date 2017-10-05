@@ -1,10 +1,12 @@
 package model.behavior;
 
 import model.Direction;
+import model.shapes.Shape;
 
 /**
- * Created by nimtego_loc on 11.07.2017.
+ * Created by myasnikov
+ * on 05.10.2017.
  */
 public interface MoveBehavior {
-    void move(Direction direction);
+    void move(Direction direction, Shape shape);
 }

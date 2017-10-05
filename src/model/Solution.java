@@ -1,37 +1,28 @@
 package model;
 
 import model.shapes.Shape;
+import view.ObserverWin;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by myasnikov
- * on 05.07.2017.
+ * on 04.10.2017.
  */
-public class Solution {
+public class Solution implements ObservableWin {
     private List<Shape> listShape;
     private Field field;
+    private List<ObserverWin> observerWinList;
 
     public Solution(Field field) {
         this.field = field;
         listShape = new ArrayList<>();
+        observerWinList = new ArrayList<>();
     }
 
-    public List<Shape> getListShape() {
-        return listShape;
-    }
-
-    public void setListShape(List<Shape> listShape) {
-        this.listShape = listShape;
-    }
-
-    public Field getField() {
-        return field;
-    }
-
-    public void setField(Field field) {
-        this.field = field;
+    public Solution(int x, int y) {
+        this(new Field(x, y));
     }
 
     public void generateField() {
@@ -39,9 +30,6 @@ public class Solution {
         for (Shape shape : listShape) {
             field.put(shape);
         }
-    }
-    public boolean connect(Shape first, Shape second) {
-        return true; // TODO: 13.07.2017
     }
 
     public Solution putShape(final Shape shape) {
@@ -54,4 +42,19 @@ public class Solution {
         return field.toString();
     }
 
+    @Override
+    public void setObserver(ObserverWin observer) {
+        this.observerWinList.add(observer);
+    }
+
+    @Override
+    public void removeObserver(ObserverWin observerWin) {
+        this.observerWinList.remove(observerWin);
+    }
+
+    @Override
+    public void update() {
+        for (ObserverWin ow : observerWinList)
+            ow.update();
+    }
 }

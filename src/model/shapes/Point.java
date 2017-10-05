@@ -2,7 +2,7 @@ package model.shapes;
 
 /**
  * Created by myasnikov
- * on 04.07.2017.
+ * on 04.10.2017.
  */
 public class Point {
     private int x;

@@ -4,19 +4,14 @@ import model.shapes.Shape;
 
 /**
  * Created by myasnikov
- * on 04.07.2017.
+ * on 05.10.2017.
  */
 public class Rotate implements RotateBehavior {
-    private Shape owner;
-
-    public Rotate(Shape owner) {
-        this.owner = owner;
-    }
     @Override
-    public boolean rotate() {
-        int tmp = owner.getEndPosition().getX();
-        owner.getEndPosition().setX(owner.getEndPosition().getY());
-        owner.getEndPosition().setY(tmp);
+    public boolean rotate(Shape shape) {
+        int tmp = shape.getEndPosition().getX();
+        shape.getEndPosition().setX(shape.getEndPosition().getY());
+        shape.getEndPosition().setY(tmp);
         return true;
     }
 }

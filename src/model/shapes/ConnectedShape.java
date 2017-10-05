@@ -2,28 +2,38 @@ package model.shapes;
 
 import model.behavior.Move;
 import model.behavior.Reflect;
-import model.behavior.Rotate;
-import model.utilits.Constant;
+import model.behavior.RotateForConnectedShape;
+import model.constant.Constant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import static model.shapes.Type.CONNECTED;
 
 /**
  * Created by myasnikov
- * on 12.07.2017.
+ * on 05.10.2017.
  */
-public class ConnectedShape extends Shape{
+public class ConnectedShape extends Shape {
     private List<Shape> connectList;
 
     public ConnectedShape() {
-        super(Type.CONNECTED, new Point(0, 0), new Point(0,0));
+        setType(CONNECTED);
+        this.startingPosition = new Point(0, 0);
+        this.endPosition = new Point(0,0);
+        setRotateBehavior(new RotateForConnectedShape());
+        setMoveBehavior(new Move());
+        setReflectBehavior(new Reflect());
         connectList = new ArrayList<>();
-        setRotateBehavior(new Rotate(this));
-        setReflectBehavior(new Reflect(this));
-        setMoveBehavior(new Move(this));
     }
     public ConnectedShape append(Shape shape) {
-        connectList.add(shape.copy());
+        Shape copyShape = shape.copy();
+        connectList.add(copyShape);
+        return this;
+    }
+    public ConnectedShape append(Shape ... args) {
+        Collections.addAll(connectList, args);
         return this;
     }
     @Override
@@ -54,6 +64,7 @@ public class ConnectedShape extends Shape{
                 a++;
             }
         }
+        endPosition = new Point(arrayConnected.length, arrayConnected[0].length);
         return arrayConnected;
     }
     private char[][] generateSize() {
@@ -66,9 +77,15 @@ public class ConnectedShape extends Shape{
         }
         return new char[x][y];
     }
-    private void setingCoordinate(char[][] connected) { // TODO: 13.07.2017
-        Point endPoint = new Point(connected.length, connected[connected.length].length);
-        setStartingPosition(new Point(0, 0));
-        setEndPosition(endPoint);
+
+    public List<Shape> getConnectList() {
+        return connectList;
+    }
+
+    public void setConnectList(List<Shape> connectList) {
+        this.connectList = connectList;
+    }
+    public void clearList() {
+        connectList = new ArrayList<>();
     }
 }

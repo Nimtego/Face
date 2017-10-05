@@ -1,31 +1,33 @@
 package model.shapes;
-import model.Direction;
 import model.behavior.Move;
 import model.behavior.Rotate;
 
-import static model.utilits.Constant.EMPTY;
-import static model.utilits.Constant.SYMBOL;
+import static model.constant.Constant.EMPTY;
+import static model.constant.Constant.SYMBOL;
+import static model.shapes.Type.SQUARE;
 
 /**
  * Created by myasnikov
- * on 04.07.2017.
+ * on 04.10.2017.
  */
 public class Square extends Shape {
 
+    public Square(int height, int width) {
+        this(new Point(0, 0), new Point(height, width));
+
+    }
     public Square(Point startingPosition, Point endPosition) {
-        super(Type.SQUARE, startingPosition, endPosition);
-        this.setRotateBehavior(new Rotate(this));
-        this.setMoveBehavior(new Move(this));
+        setType(SQUARE);
+        this.startingPosition = startingPosition;
+        this.endPosition = endPosition;
+        this.setRotateBehavior(new Rotate());
+        this.setMoveBehavior(new Move());
     }
 
     @Override
     public Shape copy() {
-        return new Square(getStartingPosition(), getEndPosition());
-    }
-
-    @Override
-    public void move(Direction direction) {
-        getMoveBehavior().move(direction);
+        return new Square(new Point(getStartingPosition().getX(), getStartingPosition().getY()),
+                new Point(getEndPosition().getX(), getEndPosition().getY()));
     }
 
     @Override
@@ -47,4 +49,5 @@ public class Square extends Shape {
         }
         return array;
     }
+
 }

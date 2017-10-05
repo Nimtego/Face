@@ -3,11 +3,11 @@ package model;
 
 import model.shapes.Shape;
 
-import static model.utilits.Constant.EMPTY;
+import static model.constant.Constant.EMPTY;
 
 /**
  * Created by myasnikov
- * on 05.07.2017.
+ * on 04.10.2017.
  */
 public class Field {
     private char[][] field;
@@ -35,9 +35,13 @@ public class Field {
         int x = shape.getStartingPosition().getX();
         int y = shape.getStartingPosition().getY();
         for (int i = 0; i < tmp.length; i++) {
-            for (int k = 0; k < tmp[i].length; k++) {
-                if (field[x + i][y + k] == EMPTY)
-                    field[x + i][y + k] = tmp[i][k];
+            if (x + i >= 0 && x + i <= field.length - 1) {
+                for (int k = 0; k < tmp[i].length; k++) {
+                    if (y + k >= 0 && y + k <= field[k].length - 1) {
+                        if (field[x + i][y + k] == EMPTY)
+                            field[x + i][y + k] = tmp[i][k];
+                    }
+                }
             }
         }
     }
@@ -59,4 +63,5 @@ public class Field {
             }
         }
     }
+
 }

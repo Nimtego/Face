@@ -1,21 +1,27 @@
 package model.shapes;
 
-import model.Direction;
 import model.behavior.Move;
 import model.behavior.Rotate;
 
-import static model.utilits.Constant.SYMBOL;
+import static model.constant.Constant.SYMBOL;
+import static model.shapes.Type.LINE;
 
 /**
  * Created by myasnikov
- * on 05.07.2017.
+ * on 05.10.2017.
  */
 public class Line extends Shape {
 
+    public Line(int width) {
+        this(new Point(0, 0), new Point(0, width));
+    }
     public Line(Point startingPosition, Point endPosition) {
-        super(Type.LINE, startingPosition, endPosition);
-        this.setRotateBehavior(new Rotate(this));
-        this.setMoveBehavior(new Move(this));
+        setType(LINE);
+        this.startingPosition = startingPosition;
+        this.endPosition = endPosition;
+        this.setRotateBehavior(new Rotate());
+        this.setMoveBehavior(new Move());
+
     }
 
     @Override
@@ -39,11 +45,8 @@ public class Line extends Shape {
 
     @Override
     public Shape copy() {
-        return new Line(getStartingPosition(), getEndPosition());
+        return new Line(new Point(getStartingPosition().getX(), getStartingPosition().getY()),
+                              new Point(getEndPosition().getX(), getEndPosition().getY()));
     }
 
-    @Override
-    public void move(final Direction direction) {
-        getMoveBehavior().move(direction);
-    }
 }
