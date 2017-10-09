@@ -95,6 +95,10 @@ public class TestShape {
                      .putShape(square)
                      .putShape(line)
                      .putShape(square2);
+        /**
+         * Временно за комитенно для тэста exception
+         * ->
+         */
 
 /*        for (int i = 0; i < 80; i++) {
             if (i % 4 == 0)
