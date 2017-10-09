@@ -1,9 +1,12 @@
 package model.shapes;
 
+import model.constant.PartFace;
+import model.shapes.collection.Shape;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static model.shapes.PartFace.*;
+import static model.constant.PartFace.*;
 
 /**
  * Created by myasnikov

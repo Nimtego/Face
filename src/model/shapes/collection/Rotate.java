@@ -1,6 +1,7 @@
-package model.behavior;
+package model.shapes.collection;
 
-import model.shapes.Shape;
+import model.behavior.interfaces.RotateBehavior;
+import model.shapes.collection.Shape;
 
 /**
  * Created by myasnikov

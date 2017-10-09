@@ -1,27 +1,16 @@
-package model.shapes;
-
-import model.behavior.Move;
-import model.behavior.Rotate;
+package model.shapes.collection;
 
 import static model.constant.Constant.SYMBOL;
-import static model.shapes.Type.LINE;
 
 /**
  * Created by myasnikov
  * on 05.10.2017.
  */
-public class Line extends Shape {
+class Line extends Shape {
 
-    public Line(int width) {
-        this(new Point(0, 0), new Point(0, width));
-    }
     public Line(Point startingPosition, Point endPosition) {
-        setType(LINE);
         this.startingPosition = startingPosition;
         this.endPosition = endPosition;
-        this.setRotateBehavior(new Rotate());
-        this.setMoveBehavior(new Move());
-
     }
 
     @Override

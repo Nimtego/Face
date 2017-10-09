@@ -1,8 +1,4 @@
-package model.shapes;
-
-import model.behavior.Move;
-import model.behavior.Reflect;
-import model.behavior.Rotate;
+package model.shapes.collection;
 
 import static model.constant.Constant.EMPTY;
 import static model.constant.Constant.SYMBOL;
@@ -11,19 +7,22 @@ import static model.constant.Constant.SYMBOL;
  * Created by myasnikov
  * on 04.10.2017.
  */
-    public class Triangle extends Shape {
+class Square extends Shape {
 
-    public Triangle(Point startingPosition, Point endPosition) {
-     //   super(Type.TRIANGLE, startingPosition, endPosition);
-        this.setMoveBehavior(new Move());
-        this.setReflectBehavior(new Reflect());
-        this.setRotateBehavior(new Rotate());
+    public Square(Point startingPosition, Point endPosition) {
+        this.startingPosition = startingPosition;
+        this.endPosition = endPosition;
     }
 
     @Override
     public Shape copy() {
-        return new Triangle(new Point(getStartingPosition().getX(), getStartingPosition().getY()),
+        Square square = new Square(new Point(getStartingPosition().getX(), getStartingPosition().getY()),
                 new Point(getEndPosition().getX(), getEndPosition().getY()));
+        square.setRotateBehavior(getRotateBehavior());
+        square.setReflectBehavior(getReflectBehavior());
+        square.setMoveBehavior(getMoveBehavior());
+        square.setType(getType());
+        return square;
     }
 
     @Override
@@ -45,4 +44,5 @@ import static model.constant.Constant.SYMBOL;
         }
         return array;
     }
+
 }

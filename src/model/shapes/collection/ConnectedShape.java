@@ -1,15 +1,10 @@
-package model.shapes;
+package model.shapes.collection;
 
-import model.behavior.Move;
-import model.behavior.Reflect;
-import model.behavior.RotateForConnectedShape;
 import model.constant.Constant;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import static model.shapes.Type.CONNECTED;
 
 /**
  * Created by myasnikov
@@ -19,12 +14,6 @@ public class ConnectedShape extends Shape {
     private List<Shape> connectList;
 
     public ConnectedShape() {
-        setType(CONNECTED);
-        this.startingPosition = new Point(0, 0);
-        this.endPosition = new Point(0,0);
-        setRotateBehavior(new RotateForConnectedShape());
-        setMoveBehavior(new Move());
-        setReflectBehavior(new Reflect());
         connectList = new ArrayList<>();
     }
     public ConnectedShape append(Shape shape) {
@@ -34,6 +23,10 @@ public class ConnectedShape extends Shape {
     }
     public ConnectedShape append(Shape ... args) {
         Collections.addAll(connectList, args);
+        return this;
+    }
+    public ConnectedShape append(List<Shape> collections) {
+        connectList.add((Shape) collections);
         return this;
     }
     @Override
@@ -64,7 +57,10 @@ public class ConnectedShape extends Shape {
                 a++;
             }
         }
+
         endPosition = new Point(arrayConnected.length, arrayConnected[0].length);
+        if (startingPosition == null)
+            startingPosition = new Point(arrayConnected.length, 0);
         return arrayConnected;
     }
     private char[][] generateSize() {

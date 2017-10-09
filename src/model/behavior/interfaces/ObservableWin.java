@@ -1,6 +1,4 @@
-package model;
-
-import view.ObserverWin;
+package model.behavior.interfaces;
 
 /**
  * Created by myasnikov

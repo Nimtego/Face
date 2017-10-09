@@ -1,4 +1,4 @@
-package model.shapes;
+package model.shapes.collection;
 
 /**
  * Created by myasnikov

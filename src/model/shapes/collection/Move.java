@@ -1,8 +1,7 @@
-package model.behavior;
+package model.shapes.collection;
 
-import model.Direction;
-import model.shapes.Point;
-import model.shapes.Shape;
+import model.behavior.interfaces.MoveBehavior;
+import model.constant.Direction;
 
 /**
  * Created by myasnikov

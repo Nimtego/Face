@@ -1,7 +1,9 @@
 package model;
 
-import model.shapes.Shape;
-import view.ObserverWin;
+import model.behavior.interfaces.ObservableWin;
+import model.shapes.collection.Point;
+import model.shapes.collection.Shape;
+import model.behavior.interfaces.ObserverWin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,10 @@ public class Solution implements ObservableWin {
     }
 
     public Solution putShape(final Shape shape) {
+        if (shape.getStartingPosition() == null || shape.getEndPosition() == null) {
+            shape.setStartingPosition(new Point(0,0));
+            shape.setEndPosition(new Point(shape.toCharArray().length, shape.toCharArray()[0].length));
+        }
         listShape.add(shape);
         return this;
     }
@@ -56,5 +62,9 @@ public class Solution implements ObservableWin {
     public void update() {
         for (ObserverWin ow : observerWinList)
             ow.update();
+    }
+    public void setAllCenter() {
+        for (Shape sh : listShape)
+            sh.setStartingPosition(field.center());
     }
 }

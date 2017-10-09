@@ -1,7 +1,8 @@
 package model;
 
 
-import model.shapes.Shape;
+import model.shapes.collection.Point;
+import model.shapes.collection.Shape;
 
 import static model.constant.Constant.EMPTY;
 
@@ -62,6 +63,9 @@ public class Field {
                 field[i][k] = EMPTY;
             }
         }
+    }
+    public Point center() {
+        return new Point(field.length / 2, field[0].length / 2);
     }
 
 }

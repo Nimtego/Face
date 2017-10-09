@@ -1,4 +1,4 @@
-package view;
+package model.behavior.interfaces;
 
 /**
  * Created by myasnikov

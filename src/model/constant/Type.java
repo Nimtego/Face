@@ -1,4 +1,4 @@
-package model.shapes;
+package model.constant;
 
 /**
  * Created by myasnikov

@@ -6,5 +6,5 @@ package model.constant;
  */
 public class Constant {
     public static final char SYMBOL = '*';
-    public static final char EMPTY = '.';
+    public static final char EMPTY = ' ';
 }

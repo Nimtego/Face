@@ -1,6 +1,6 @@
-package model.behavior;
+package model.behavior.interfaces;
 
-import model.shapes.Shape;
+import model.shapes.collection.Shape;
 
 /**
  * Created by myasnikov
